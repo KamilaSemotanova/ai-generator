@@ -1,29 +1,104 @@
-# Create T3 App
+# AI Model Comparison Tool
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+This project allows users to compare responses from three different AI models (OpenAI's GPT-4, Anthropic's Claude) side by side. It is built using Next.js with the **App Router** and features a simple frontend interface to enter a prompt and display AI-generated responses.
 
-## What's next? How do I make an app with this?
+## 🚀 Features
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- Compare outputs from **GPT-4**, **Claude**
+- Built with **Next.js App Router**
+- Uses API routes for backend requests
+- Simple and clean UI
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## 🛠️ Tech Stack
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- **Frontend:** React (Next.js)
+- **Backend:** Next.js API routes (App Router)
+- **Requests:** Axios
+- **Styling:** Tailwind CSS
 
-## Learn More
+---
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## 📦 Installation
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+### **1. Clone the Repository**
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+```sh
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+```
 
-## How do I deploy this?
+### **2. Install Dependencies**
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+```sh
+npm install
+```
+
+### **3. Set Up Environment Variables**
+
+Create a **`.env.local`** file in the root directory and add:
+
+```env
+OPENAI_API_KEY=your_openai_api_key
+ANTHROPIC_API_KEY=your_anthropic_api_key
+```
+
+Replace `your_openai_api_key` and `your_anthropic_api_key` with your actual API keys. Also make sure that you are using same version as is put down in route.ts in ai folder.
+
+### **4. Run the Development Server**
+
+```sh
+npm run dev
+```
+
+The application will be available at **`http://localhost:3000`**.
+
+---
+
+## 🚀 Usage
+
+1. Enter a prompt in the text area.
+2. Click **"Generate Responses"**.
+3. View AI responses from OpenAI and Claude side by side.
+
+---
+
+## 🔧 API Endpoints
+
+This project includes a backend API to fetch AI responses.
+
+- **POST `/api/ai`** → Sends a request to all three AI models and returns their responses.
+
+**Example Request:**
+
+```sh
+curl -X POST http://localhost:3000/api/ai -H "Content-Type: application/json" -d '{"prompt": "Tell me a joke"}'
+```
+
+**Example Response:**
+
+```json
+{
+  "openai": "Why did the chicken cross the road? To get to the other side!",
+  "claude": "What do you call fake spaghetti? An impasta!",
+  "llama": "Knock, knock! Who’s there? Lettuce. Lettuce who? Lettuce in, it's cold out here!"
+}
+```
+
+---
+
+## ✅ Future Improvements
+
+Add log in and place it online with ability to update the tokens individually
+
+---
+
+## 💡 Contributing
+
+Feel free to submit issues and pull requests to improve the project!
+
+---
+
+## 📝 Notes
+
+- Ensure you have valid API keys in `.env.local` before running the project.
+- This project is for personal use only, and API costs may apply when using external services.
